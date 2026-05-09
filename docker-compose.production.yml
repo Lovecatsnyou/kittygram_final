@@ -14,7 +14,6 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend
     image: lovecatsnyou/kittygram_backend
     container_name: backend
     env_file: .env
@@ -25,14 +24,12 @@ services:
       - media:/app/media
 
   frontend:
-    build: ./frontend
     image: lovecatsnyou/kittygram_frontend
     container_name: frontend
     volumes:
       - static:/app/build
 
   gateway:
-    build: ./nginx
     image: lovecatsnyou/kittygram_gateway
     container_name: gateway
     depends_on:
